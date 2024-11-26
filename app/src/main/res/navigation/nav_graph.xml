@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/registerAsFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.volu.volunteerconnect.Ui.Login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/registerAsFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeOrgFragment"
+            app:destination="@id/homeOrgFragment"
+            app:popUpTo="@id/registerAsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerAsFragment"
+        android:name="com.volu.volunteerconnect.Ui.Register.RegisterAsFragment"
+        android:label="RegisterAsFragment">
+        <action
+            android:id="@+id/action_registerAsFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_registerAsFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_registerAsFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/registerAsFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_registerAsFragment_to_homeOrgFragment"
+            app:destination="@id/homeOrgFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.volu.volunteerconnect.Ui.Register.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register">
+        <argument
+            android:name="role"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.volu.volunteerconnect.Ui.ForgotPassword.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.volu.volunteerconnect.Ui.Home.HomeFragment"
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileBottomSheetFragment"
+            app:destination="@id/profileBottomSheetFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_singleEventFragment"
+            app:destination="@id/singleEventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.volu.volunteerconnect.Ui.Maps.MapsFragment"
+        android:label="MapsFragment" >
+        <action
+            android:id="@+id/action_mapsFragment_to_mapEventBottomFragment"
+            app:destination="@id/mapEventBottomFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/profileBottomSheetFragment"
+        android:name="com.volu.volunteerconnect.Ui.Profile.ProfileBottomSheetFragment"
+        android:label="fragment_bottom_sheet_profile"
+        tools:layout="@layout/fragment_bottom_sheet_profile">
+        <argument
+            android:name="UserData"
+            app:argType="com.volu.volunteerconnect.Model.User.UserData" />
+        <action
+            android:id="@+id/action_profileBottomSheetFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_profileBottomSheetFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_profileBottomSheetFragment_to_savedFragment"
+            app:destination="@id/savedFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.volu.volunteerconnect.Ui.Profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/homeOrgFragment"
+        android:name="com.volu.volunteerconnect.Ui.HomeOrg.HomeOrgFragment"
+        android:label="fragment_home_org"
+        tools:layout="@layout/fragment_home_org">
+        <action
+            android:id="@+id/action_homeOrgFragment_to_profileBottomSheetFragment"
+            app:destination="@id/profileBottomSheetFragment" />
+        <action
+            android:id="@+id/action_homeOrgFragment_to_addBottomSheetFragment"
+            app:destination="@id/addBottomSheetFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/addBottomSheetFragment"
+        android:name="com.volu.volunteerconnect.Ui.HomeOrg.BottomSheets.AddBottomSheetFragment"
+        android:label="AddBottomSheetFragment">
+        <argument
+            android:name="UserData"
+            app:argType="com.volu.volunteerconnect.Model.User.UserData" />
+        <action
+            android:id="@+id/action_addBottomSheetFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+        <action
+            android:id="@+id/action_addBottomSheetFragment_to_action_jobs"
+            app:destination="@id/action_jobs" />
+    </dialog>
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.volu.volunteerconnect.Ui.EventsCreation.EventFragment"
+        android:label="fragment_event"
+        tools:layout="@layout/fragment_event">
+        <action
+            android:id="@+id/action_eventFragment_to_eventVolunteerFragment"
+            app:destination="@id/eventVolunteerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventVolunteerFragment"
+        android:name="com.volu.volunteerconnect.Ui.EventsCreation.EventVolunteerFragment"
+        android:label="EventVolunteerFragment">
+        <argument
+            android:name="EventData"
+            app:argType="com.volu.volunteerconnect.Model.Events.Data" />
+        <action
+            android:id="@+id/action_eventVolunteerFragment_to_addQuestionsBottomFragment"
+            app:destination="@id/addQuestionsBottomFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.volu.volunteerconnect.Ui.Categories.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category">
+        <argument
+            android:name="CategoryData"
+            app:argType="com.volu.volunteerconnect.Model.Category.CategoryData" />
+        <action
+            android:id="@+id/action_categoryFragment_to_singleEventFragment"
+            app:destination="@id/singleEventFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/addQuestionsBottomFragment"
+        android:name="com.volu.volunteerconnect.Ui.EventsCreation.Sheets.AddQuestionsBottomFragment"
+        android:label="fragment_add_question_bottom"
+        tools:layout="@layout/fragment_add_question_bottom" />
+    <fragment
+        android:id="@+id/singleEventFragment"
+        android:name="com.volu.volunteerconnect.Ui.Events.SingleEventFragment"
+        android:label="SingleEventFragment">
+        <argument
+            android:name="EventData"
+            app:argType="com.volu.volunteerconnect.Model.Events.DataFetch"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_singleEventFragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionFragment"
+        android:name="com.volu.volunteerconnect.Ui.Events.QuestionFragment"
+        android:label="fragment_question"
+        tools:layout="@layout/fragment_question">
+        <action
+            android:id="@+id/action_questionFragment_to_paymentActivity"
+            app:destination="@id/paymentActivity" />
+        <argument
+            android:name="eventData"
+            app:argType="com.volu.volunteerconnect.Model.Events.DataFetch"
+            app:nullable="true" />
+    </fragment>
+    <activity
+        android:id="@+id/paymentActivity"
+        android:name="com.volu.volunteerconnect.Ui.Events.PaymentActivity"
+        android:label="activity_payment"
+        tools:layout="@layout/activity_payment">
+        <argument
+            android:name="eventData"
+            app:argType="com.volu.volunteerconnect.Model.Events.DataFetch"
+            app:nullable="true" />
+        <argument
+            android:name="requestData"
+            app:argType="com.volu.volunteerconnect.Model.Requests.RequestsData"
+            app:nullable="true" />
+    </activity>
+    <fragment
+        android:id="@+id/action_jobs"
+        android:name="com.volu.volunteerconnect.Ui.EventJobs.ForumListFragment"
+        android:label="fragment_event_list"
+        tools:layout="@layout/fragment_forum_list" >
+        <action
+            android:id="@+id/action_action_jobs_to_postsFragment"
+            app:destination="@id/postsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/action_connections"
+        android:name="com.volu.volunteerconnect.Ui.Requests.ForumRequestFragment"
+        android:label="fragment_forum_request"
+        tools:layout="@layout/fragment_forum_request" />
+    <fragment
+        android:id="@+id/action_community"
+        android:name="com.volu.volunteerconnect.Ui.ParticipatedEvents.ParticipatedEventsFragment"
+        android:label="fragment_participated_events"
+        tools:layout="@layout/fragment_participated_events" >
+        <action
+            android:id="@+id/action_action_community_to_singleEventFragment"
+            app:destination="@id/singleEventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postsFragment"
+        android:name="com.volu.volunteerconnect.Ui.Posts.PostsFragment"
+        android:label="PostsFragment" >
+        <argument
+            android:name="forumData"
+            app:argType="com.volu.volunteerconnect.Model.Forum.ForumData"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_postsFragment_to_addPostBottomFragment"
+            app:destination="@id/addPostBottomFragment" />
+        <action
+            android:id="@+id/action_postsFragment_to_handlePostBottomFragment"
+            app:destination="@id/handlePostBottomFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/addPostBottomFragment"
+        android:name="com.volu.volunteerconnect.Ui.Posts.BottomSheet.AddPostBottomFragment"
+        android:label="fragment_bottom_add_post"
+        tools:layout="@layout/fragment_bottom_add_post" >
+        <argument
+            android:name="forumData"
+            app:argType="com.volu.volunteerconnect.Model.Forum.ForumData"
+            app:nullable="true" />
+        <argument
+            android:name="postData"
+            app:argType="com.volu.volunteerconnect.Model.Posts.PostsData"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_addPostBottomFragment_to_postsFragment2"
+            app:destination="@id/postsFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/handlePostBottomFragment"
+        android:name="com.volu.volunteerconnect.Ui.Posts.BottomSheet.HandlePostBottomFragment"
+        android:label="fragment_bottom_handle_post"
+        tools:layout="@layout/fragment_bottom_handle_post" >
+        <argument
+            android:name="postData"
+            app:argType="com.volu.volunteerconnect.Model.Posts.PostsData" />
+        <argument
+            android:name="forumData"
+            app:argType="com.volu.volunteerconnect.Model.Forum.ForumData" />
+        <action
+            android:id="@+id/action_handlePostBottomFragment_to_addPostBottomFragment"
+            app:destination="@id/addPostBottomFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/mapEventBottomFragment"
+        android:name="com.volu.volunteerconnect.Ui.Maps.MapEventBottomFragment"
+        android:label="fragment_bottom_map_event"
+        tools:layout="@layout/fragment_bottom_map_event" >
+        <action
+            android:id="@+id/action_mapEventBottomFragment_to_singleEventFragment"
+            app:destination="@id/singleEventFragment" />
+        <argument
+            android:name="EventData"
+            app:argType="com.volu.volunteerconnect.Model.Events.DataFetch"
+            app:nullable="true" />
+    </dialog>
+    <fragment
+        android:id="@+id/savedFragment"
+        android:name="com.volu.volunteerconnect.Ui.Saved.SavedFragment"
+        android:label="fragment_saved"
+        tools:layout="@layout/fragment_saved" >
+        <action
+            android:id="@+id/action_savedFragment_to_singleEventFragment"
+            app:destination="@id/singleEventFragment" />
+    </fragment>
+</navigation>
